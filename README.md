@@ -16,7 +16,9 @@ mvn clean package
 ```sh
 cd ..
 docker build --tag=observability-auto-spring:latest .
-docker run -p 8080:8080 -e OTEL_EXPORTER_OTLP_ENDPOINT="http://host.docker.internal:4318" -d observability-auto-spring:latest --network host
+docker run -p 8080:8080 \
+    -e OTEL_EXPORTER_OTLP_ENDPOINT="http://host.docker.internal:4318" \
+    -d observability-auto-spring:latest --network host
 ```
 
 > A partir da execução verifique se a aplicação está escutando na porta 8080 nas paths "/", e "/actuator/health"
